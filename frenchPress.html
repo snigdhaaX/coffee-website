@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>French Press Fun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brown: #4B2E2E;
+      --beige: #F5F5DC;
+      --cream: #E6D3B3;
+    }
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: var(--beige);
+      color: var(--brown);
+      padding: 20px;
+    }
+    header {
+      background-color: var(--brown);
+      color: var(--beige);
+      padding: 30px;
+      text-align: center;
+      border-bottom: 4px solid #a97c50;
+    }
+    .step-box {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: var(--cream);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .step-box h2 {
+      margin-bottom: 20px;
+    }
+    .step {
+      font-size: 1.2em;
+      margin: 30px 0;
+      display: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .step.active {
+      display: block;
+    }
+    button {
+      background-color: var(--brown);
+      color: var(--beige);
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6B4B3E;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>French Press Fancy 🇫🇷</h1>
+    <p>Classic. Bold. Unfiltered joy in a cup.</p>
+  </header>
+
+  <div class="step-box">
+    <h2>Master the French Press</h2>
+
+    <div class="step active" id="step1">
+      Step 1: Boil water and let it cool for 30 seconds 
+    </div>
+    <div class="step" id="step2">
+      Step 2: Add 2 tablespoons of coarsely ground coffee per cup into the press 
+    </div>
+    <div class="step" id="step3">
+      Step 3: Pour hot water over the grounds and stir gently 
+    </div>
+    <div class="step" id="step4">
+      Step 4: Place the lid on and let it steep for 4 minutes 
+    </div>
+    <div class="step" id="step5">
+      Step 5: Slowly press down the plunger 
+    </div>
+    <div class="step" id="step6">
+      Step 6: Pour into your cup and enjoy that rich, bold flavor 
+    </div>
+
+    <button onclick="nextStep()">Next Step</button>
+  </div>
+
+  <footer>Pure, Pressed Perfection 🇫🇷</footer>
+
+  <script>
+    let current = 1;
+    function nextStep() {
+      const totalSteps = 6;
+      if (current < totalSteps) {
+        document.getElementById(`step${current}`).classList.remove("active");
+        current++;
+        document.getElementById(`step${current}`).classList.add("active");
+      } else {
+        alert("You’ve mastered the French Press!");
+      }
+    }
+  </script>
+</body>
+</html>

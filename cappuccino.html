@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cappuccino Craze</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brown: #4B2E2E;
+      --beige: #F5F5DC;
+      --cream: #E6D3B3;
+    }
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: var(--beige);
+      color: var(--brown);
+      padding: 20px;
+    }
+    header {
+      background-color: var(--brown);
+      color: var(--beige);
+      padding: 30px;
+      text-align: center;
+      border-bottom: 4px solid #a97c50;
+    }
+    .step-box {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: var(--cream);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .step-box h2 {
+      margin-bottom: 20px;
+    }
+    .step {
+      font-size: 1.2em;
+      margin: 30px 0;
+      display: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .step.active {
+      display: block;
+    }
+    button {
+      background-color: var(--brown);
+      color: var(--beige);
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6B4B3E;
+    }
+    .timer {
+      font-size: 1.4em;
+      margin-top: 15px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cappuccino Craze ☁️</h1>
+    <p>Let’s froth, pour, and enjoy this fluffy beauty!</p>
+  </header>
+
+  <div class="step-box">
+    <h2>Make Your Perfect Cappuccino</h2>
+
+    <div class="step active" id="step1">
+      Step 1: Brew 1 shot of espresso — rich and bold! 
+    </div>
+    <div class="step" id="step2">
+      Step 2: Pour cold milk into a frothing pitcher 
+    </div>
+    <div class="step" id="step3">
+      Step 3: Froth it! You want lots of microfoam! <br />
+      <div class="timer" id="countdown">00:08</div>
+    </div>
+    <div class="step" id="step4">
+      Step 4: Gently pour steamed milk over your espresso 
+    </div>
+    <div class="step" id="step5">
+      Step 5: Spoon the foam on top generously — cloud vibes only! 
+    </div>
+    <div class="step" id="step6">
+      Step 6: Sprinkle some cocoa/cinnamon & sip your joy 
+    </div>
+
+    <button onclick="nextStep()">Next Step</button>
+  </div>
+
+  <footer>Fluff it, sip it, love it ☁️</footer>
+
+  <script>
+    let current = 1;
+    let timer;
+
+    function nextStep() {
+      const totalSteps = 6;
+      if (current < totalSteps) {
+        document.getElementById(`step${current}`).classList.remove("active");
+        current++;
+
+        const newStep = document.getElementById(`step${current}`);
+        newStep.classList.add("active");
+
+        if (current === 3) startCountdown();
+      } else {
+        alert("Cappuccino complete! You fluffy genius!");
+      }
+    }
+
+    function startCountdown() {
+      let seconds = 8;
+      const countdown = document.getElementById("countdown");
+      countdown.textContent = `00:${seconds < 10 ? '0' : ''}${seconds}`;
+
+      timer = setInterval(() => {
+        seconds--;
+        countdown.textContent = `00:${seconds < 10 ? '0' : ''}${seconds}`;
+        if (seconds === 0) clearInterval(timer);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

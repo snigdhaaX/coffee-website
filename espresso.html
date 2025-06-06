@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Espresso Adventure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brown: #4B2E2E;
+      --beige: #F5F5DC;
+      --cream: #E6D3B3;
+    }
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: var(--beige);
+      color: var(--brown);
+      padding: 20px;
+    }
+    header {
+      background-color: var(--brown);
+      color: var(--beige);
+      padding: 30px;
+      text-align: center;
+      border-bottom: 4px solid #a97c50;
+    }
+    .step-box {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: var(--cream);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .step-box h2 {
+      margin-bottom: 20px;
+    }
+    .step {
+      font-size: 1.2em;
+      margin: 30px 0;
+      display: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .step.active {
+      display: block;
+    }
+    button {
+      background-color: var(--brown);
+      color: var(--beige);
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6B4B3E;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Make an Espresso Shot </h1>
+    <p>Your bold coffee journey starts here!</p>
+  </header>
+
+  <div class="step-box">
+    <h2>Let's Brew Some Magic</h2>
+    <div class="step active" id="step1">
+      Step 1: Grab some freshly roasted coffee beans 
+    </div>
+    <div class="step" id="step2">
+      Step 2: Grind them fine — think powdery but not dusty! 
+    </div>
+    <div class="step" id="step3">
+      Step 3: Load 18–20g of ground coffee into your espresso portafilter 
+    </div>
+    <div class="step" id="step4">
+      Step 4: Tamp it down firmly and evenly – channel your inner barista 
+    </div>
+    <div class="step" id="step5">
+      Step 5: Pull the shot! You want 25–30 seconds of liquid gold 
+    </div>
+    <div class="step" id="step6">
+      Step 6: Sip and enjoy your beautifully bold espresso 
+    </div>
+
+    <button onclick="nextStep()">Next Step</button>
+  </div>
+
+  <footer>Espresso yourself – one sip at a time </footer>
+
+  <script>
+    let current = 1;
+    function nextStep() {
+      const totalSteps = 6;
+      if (current < totalSteps) {
+        document.getElementById(`step${current}`).classList.remove("active");
+        current++;
+        document.getElementById(`step${current}`).classList.add("active");
+      } else {
+        alert("You're now a certified espresso expert!");
+      }
+    }
+  </script>
+</body>
+</html>
